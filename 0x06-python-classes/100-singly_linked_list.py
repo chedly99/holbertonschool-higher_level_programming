@@ -85,38 +85,40 @@ class SinglyLinkedList:
         listx = []
         pointer = self.__head
 
-        while pointer:    def printy(self):
-                temp = self.__head
-                while temp:
-                    print(temp.data)
-                    temp = temp.next_node
-
-            def sorted_insert(self, value):
-
-                ''' sort and insert '''
-
-                newnode = Node(value)
-
-                if self.__head is None:
-                    self.__head = newnode
-
-                elif self.__head.data >= newnode.data:
-                    newnode.next_node = self.__head
-                    self.__head = newnode
-                    return
-
-                temp = self.__head
-                while temp:
-                    if temp.next_node is None:
-                        break
-                    if newnode.data > self.__head.data and \
-                            temp.next_node.data > newnode.data:
-                        newnode.next_node = temp.next_node
-                        temp.next_node = newnode
-                        return
-                    temp = temp.next_node
-                temp.next_node = newnode
-                newnode.next_node = None
+        while pointer:
             listx.append(str(pointer.data))
             pointer = pointer.next_node
         return '\n'.join(listx)
+
+    def printy(self):
+        temp = self.__head
+        while temp:
+            print(temp.data)
+            temp = temp.next_node
+
+    def sorted_insert(self, value):
+
+        ''' sort and insert '''
+
+        newnode = Node(value)
+
+        if self.__head is None:
+            self.__head = newnode
+
+        elif self.__head.data >= newnode.data:
+            newnode.next_node = self.__head
+            self.__head = newnode
+            return
+
+        temp = self.__head
+        while temp:
+            if temp.next_node is None:
+                break
+            if newnode.data > self.__head.data and \
+                    temp.next_node.data > newnode.data:
+                newnode.next_node = temp.next_node
+                temp.next_node = newnode
+                return
+            temp = temp.next_node
+        temp.next_node = newnode
+        newnode.next_node = None
