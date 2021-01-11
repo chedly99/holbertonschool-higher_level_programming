@@ -6,5 +6,4 @@ class Rectangle:
 
     ''' New class '''
 
-
 pass
