@@ -10,16 +10,11 @@ if __name__ == "__main__":
     pas = sys.argv[2]
     dbn = sys.argv[3]
     statex = sys.argv[4]
-
-    for i in statex:
-        if i == ';' or i == '':
-            sys.exit()
-    print(statex)
     db = MySQLdb.connect(host="localhost", port=3306,
                          user=username, passwd=pas, db=dbn)
     cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE name='{:s}' ORDER BY states.id"
-                .format(statex))
+    cur.execute("SELECT * FROM states WHERE states.name like %s\
+                             ORDER BY states.id", (statex,))
     rows = cur.fetchall()
     for row in rows:
         print(row)
